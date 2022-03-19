@@ -1,0 +1,33 @@
+﻿<a asp-action="Create">
+    <button type="button" class="btn btn-success">Create</button>
+</a>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Name</th>
+            <th scope="col">Creator</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var post in Model)
+        {
+            <tr>
+                <th scope="row">@post.Id</th>
+                <td>@post.Name</td>
+               
+               
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@post.Id">
+                            <button type="button" class="btn btn-warning">Edit</button>
+                        </a>
+                        <a asp-action="Delete" asp-route-id="@post.Id">
+                            <button type="button" class="btn btn-danger">Delete</button>
+                        </a>
+                    </td>
+                
+            </tr>
+        }
+    </tbody>
+</table>

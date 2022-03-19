@@ -1,5 +1,7 @@
 ﻿//using Jobssait.Models.DTOs;
 //using Jobssait.Models.Entities;
+using Jobssait.Models;
+using Jobssait.Models.DTO;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -11,15 +13,15 @@ namespace Jobssait.Controllers
 {
     public class AccountController : Controller
     {
-     /*   private UserManager<User> userManager;
-        private SignInManager<User> signInManager;
-
+        private UserManager<User> userManager;
+      //  private SignInManager<User> signInManager;
+     
         public AccountController(UserManager<User> userManager, SignInManager<User> signInManager)
         {
             this.userManager = userManager;
-            this.signInManager = signInManager;
+          //  this.signInManager = signInManager;
         }
-     */
+     
         public IActionResult Register()
         {
             return View();
@@ -35,36 +37,31 @@ namespace Jobssait.Controllers
             return RedirectToAction(nameof(Index), "Home");
         }
 
-      /*  [HttpPost]
+        [HttpPost]
         public async Task<IActionResult> Register(UserDTO userDTO)
         {
-            if (userDTO.Password != userDTO.ConfirmPassword)
-            {
-                return View();
-            }
-
             User user = new User();
             user.Email = userDTO.Email;
             user.UserName = userDTO.Email;
-            user.FirstName = userDTO.FirstName;
-            user.LastName = userDTO.LastName;
-
+            user.Userusername = userDTO.Userusername;
+            
             IdentityResult result = await userManager.CreateAsync(user, userDTO.Password);
 
             if (result.Succeeded)
             {
                 return RedirectToAction(nameof(Index), "Home");
             }
-
+          /*
             List<IdentityError> errors = new List<IdentityError>(result.Errors);
             ViewData["errors"] = errors;
+         */
 
             return View();
         }
 
 
 
-
+/*
         [HttpPost]
         public async Task<IActionResult> Login(UserDTO userDTO)
         {
@@ -79,8 +76,8 @@ namespace Jobssait.Controllers
 
             return View();
         }
-
-        */
+*/
+        
 
     }
 }

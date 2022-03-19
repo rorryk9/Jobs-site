@@ -1,15 +1,18 @@
-using Jobssait.Models;
+﻿using Jobssait.Models;
 using Jobssait.Services;
 using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace Jobssait.Controllers
 {
     public class PostController : Controller
     {
-        private IPostService postService;
+        private PostService postService;
 
-        public PostController(IPostService postService)
+        public PostController(PostService postService)
         {
             this.postService = postService;
         }

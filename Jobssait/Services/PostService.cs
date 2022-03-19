@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Jobssait.Services
 {
-    public class PostService : IPostService
+    public class PostService 
     {
         private IData data;
 
