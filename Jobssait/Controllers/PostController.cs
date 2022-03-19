@@ -1,5 +1,6 @@
 ﻿using Jobssait.Models;
 using Jobssait.Services;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -11,10 +12,12 @@ namespace Jobssait.Controllers
     public class PostController : Controller
     {
         private PostService postService;
+        private UserManager<User> userManager;
 
-        public PostController(PostService postService)
+        public PostController(PostService postService, UserManager<User> userManager)
         {
             this.postService = postService;
+            this.userManager = userManager;
         }
 
         public IActionResult Index()
@@ -31,9 +34,11 @@ namespace Jobssait.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create(string content)
+        public async Task <IActionResult> Create(Post post)
         {
-            postService.Create(content);
+            User user = await userManager.GetUserAsync(User).ConfigureAwait(false);
+        
+            postService.Create(post, user);
 
             return RedirectToAction(nameof(Index));
         }
@@ -49,9 +54,9 @@ namespace Jobssait.Controllers
         [HttpPost]
         public IActionResult Edit(int id, string content)
         {
-            postService.Edit(id, content);
+            Post post = postService.GetById(id);
 
-            return RedirectToAction(nameof(Index));
+            return View(post);
         }
 
         [HttpGet]

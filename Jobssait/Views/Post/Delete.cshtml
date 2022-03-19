@@ -1,0 +1,16 @@
+﻿@model Post
+
+<h1>Delete Product</h1>
+
+<form asp-action="DeleteConfirm" asp-route-id="@Model.Id">
+
+    <div class="form-group">
+        <label>Name</label>
+        <input type="text" class="form-control" value="@Model.Name" disabled>
+    </div>
+  
+    <button type="submit" class="btn btn-primary">ConfirmDelete</button>
+    <a asp-action="Index">
+        <button type="button" class="btn btn-secondary">Cancel</button>
+    </a>
+</form>

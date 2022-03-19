@@ -9,44 +9,48 @@ namespace Jobssait.Services
 {
     public class PostService 
     {
-        private IData data;
+       
+        private UserDBContext dbContext;
 
-        public PostService(IData data)
+        public PostService(UserDBContext dbContext)
         {
-            this.data = data;
+            this.dbContext = dbContext;
         }
 
         public List<Post> GetAll()
         {
-            return data.Posts;
+            return dbContext.Posts.ToList();
         }
 
-        public Post Create(string content)
+        public Post Create(Post post,User user)
         {
-            Post post = new Post(content);
-            data.Posts.Add(post);
+            post.User = user;
+
+            dbContext.Posts.Add(post);
+            dbContext.SaveChanges();
 
             return post;
         }
+       
 
-        public Post Edit(int id, string content)
+        public void Edit(Post post)
         {
-            Post post = GetById(id);
-            post.Content = content;
-
-            return post;
+            Post dbpost = GetById(post.Id);
+            dbpost.Content = post.Content;
+            dbContext.SaveChanges();
+            //  return post;
         }
-        public Post Delete(int id)
+        public void Delete(int id)
         {
-            Post post = GetById(id);
-            data.Posts.Remove(post);
-
-            return post;
+            Post dbpost = GetById(id);
+            dbContext.Posts.Remove(dbpost);
+            dbContext.SaveChanges();
+            //return post;
         }
 
         public Post GetById(int id)
         {
-            return data.Posts.FirstOrDefault(p => p.Id == id);
+            return dbContext.Posts.FirstOrDefault(x => x.Id == id);
         }
     }
 }

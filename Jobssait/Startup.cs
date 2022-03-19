@@ -1,4 +1,5 @@
 using Jobssait.Models;
+using Jobssait.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -44,7 +45,8 @@ namespace Jobssait
                .AddEntityFrameworkStores<UserDBContext>()
                .AddDefaultTokenProviders();
 
-
+            // Services
+            services.AddScoped<PostService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

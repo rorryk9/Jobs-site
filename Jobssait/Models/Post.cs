@@ -5,7 +5,7 @@ namespace Jobssait.Models
 {
     public class Post
     {
-        private static int id = 0;
+     /*   private static int id = 0;
 
         private string content;
 
@@ -14,25 +14,28 @@ namespace Jobssait.Models
             Id = ++id;
             Content = content;
         }
+     */
 
         public int Id { get; set; }
 
         public string Name { get; set; }
 
 
-        public string Content
-        {
-            get { return content; }
-            set
-            {
-                if (string.IsNullOrEmpty(value))
-                {
-                    throw new ArgumentException("Content cannot be null or empty!");
-                }
+        /*     public string Content
+             {
+                 get { return content; }
+                 set
+                 {
+                     if (string.IsNullOrEmpty(value))
+                     {
+                         throw new ArgumentException("Content cannot be null or empty!");
+                     }
 
-                content = value;
-            }
-        }
+                     content = value;
+                 }
+             }*/
+
+        public string Content { get; set; }
 
         [ForeignKey("User")]
         public int UseerId { get; set; }
