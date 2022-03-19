@@ -9,3 +9,4 @@ namespace Jobssait.Models
         public bool ShowRequestId => !string.IsNullOrEmpty(RequestId);
     }
 }
+
