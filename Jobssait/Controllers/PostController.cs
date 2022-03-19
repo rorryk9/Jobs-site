@@ -52,11 +52,11 @@ namespace Jobssait.Controllers
         }
 
         [HttpPost]
-        public IActionResult Edit(int id, string content)
+        public IActionResult Edit(Post post)
         {
-            Post post = postService.GetById(id);
+            postService.Edit(post);
 
-            return View(post);
+            return RedirectToAction(nameof(Index));
         }
 
         [HttpGet]

@@ -38,6 +38,7 @@ namespace Jobssait.Services
             Post dbpost = GetById(post.Id);
             dbpost.Content = post.Content;
             dbContext.SaveChanges();
+
             //  return post;
         }
         public void Delete(int id)

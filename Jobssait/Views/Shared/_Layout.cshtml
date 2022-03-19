@@ -59,28 +59,15 @@
             @RenderBody()
         </main>
     </div>
-    @model List<Post>
+    
+    <footer class="border-top footer text-muted">
         <div class="container">
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th scope="col">Id</th>
-                        <th scope="col">Name</th>
-                        <th scope="col">Content</th>
-                        <th scope="col">Creator</th>
-                    </tr>
-                </thead>
-            </table>
+            &copy; 2022 - Jobssait - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
-
-        <footer class="border-top footer text-muted">
-            <div class="container">
-                &copy; 2022 - Jobssait - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-            </div>
-        </footer>
-        <script src="~/lib/jquery/dist/jquery.min.js"></script>
-        <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-        <script src="~/js/site.js" asp-append-version="true"></script>
-        @await RenderSectionAsync("Scripts", required: false)
-    </body>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
 </html>
