@@ -11,6 +11,8 @@ namespace Jobssait.Models.DTO
 
         public string Name { get; set; }
 
+        public string Content { get; set; }
+
         public string CreatedBy { get; set; }
         public string UserEmail { get; set; }
     }

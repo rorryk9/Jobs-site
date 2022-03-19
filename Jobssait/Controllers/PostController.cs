@@ -1,4 +1,5 @@
 ﻿using Jobssait.Models;
+using Jobssait.Models.DTO;
 using Jobssait.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -22,7 +23,7 @@ namespace Jobssait.Controllers
 
         public IActionResult Index()
         {
-            List<Post> posts = postService.GetAll();
+            List<PostDTO> posts = postService.GetAll();
 
             return View(posts);
         }
@@ -74,5 +75,18 @@ namespace Jobssait.Controllers
 
             return RedirectToAction(nameof(Index));
         }
+        public IActionResult Preview(int id)
+        {
+            Post post = postService.GetById(id);
+
+            return View(post);
+        }
+      /*  public IActionResult Preview(int id)
+        {
+            postService.Delete(id);
+
+            return RedirectToAction(nameof(Index));
+        }
+      */
     }
 }
