@@ -14,12 +14,12 @@ namespace Jobssait.Controllers
     public class AccountController : Controller
     {
         private UserManager<User> userManager;
-      //  private SignInManager<User> signInManager;
+        private SignInManager<User> signInManager;
      
         public AccountController(UserManager<User> userManager, SignInManager<User> signInManager)
         {
             this.userManager = userManager;
-          //  this.signInManager = signInManager;
+            this.signInManager = signInManager;
         }
      
         public IActionResult Register()
@@ -33,7 +33,7 @@ namespace Jobssait.Controllers
         }
         public IActionResult Logout()
         {
-    //        signInManager.SignOutAsync();
+            signInManager.SignOutAsync();
             return RedirectToAction(nameof(Index), "Home");
         }
 
@@ -59,9 +59,6 @@ namespace Jobssait.Controllers
             return View();
         }
 
-
-
-/*
         [HttpPost]
         public async Task<IActionResult> Login(UserDTO userDTO)
         {
@@ -72,11 +69,10 @@ namespace Jobssait.Controllers
                 return RedirectToAction(nameof(Index), "Home");
             }
 
-            ViewData["errorMessage"] = "Username or password is incorrect!";
+           // ViewData["errorMessage"] = "Username or password is incorrect!";
 
             return View();
         }
-*/
         
 
     }

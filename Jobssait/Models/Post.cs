@@ -1,4 +1,5 @@
 using System;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Jobssait.Models
 {
@@ -17,6 +18,8 @@ namespace Jobssait.Models
         public int Id { get; set; }
 
         public string Name { get; set; }
+
+
         public string Content
         {
             get { return content; }
@@ -30,5 +33,9 @@ namespace Jobssait.Models
                 content = value;
             }
         }
+
+        [ForeignKey("User")]
+        public int UseerId { get; set; }
+        public User User { get; set; }
     }
 }
