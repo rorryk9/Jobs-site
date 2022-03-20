@@ -28,38 +28,35 @@ namespace Jobssait.Services
                 .ToList();
         }
 
-        public Post Create(Post post,User user)
+        public void Create(Post post, User user)
         {
             post.User = user;
 
             dbContext.Posts.Add(post);
             dbContext.SaveChanges();
 
-            return post;
         }
-       
+
 
         public void Edit(Post post)
         {
             Post dbpost = GetById(post.Id);
             dbpost.Content = post.Content;
+            dbpost.Spaces = post.Spaces;
             dbContext.SaveChanges();
 
-            //  return post;
         }
         public void Delete(int id)
         {
             Post dbpost = GetById(id);
             dbContext.Posts.Remove(dbpost);
             dbContext.SaveChanges();
-            //return post;
         }
-        public void Preview(int id)
+        public void Aply(int id)
         {
             Post dbpost = GetById(id);
-           // dbContext.Posts.Remove(dbpost);
-           // dbContext.SaveChanges();
-            //return post;
+            dbpost.Spaces --;
+             dbContext.SaveChanges();
         }
 
         public Post GetById(int id)
@@ -73,7 +70,8 @@ namespace Jobssait.Services
             product.Id = p.Id;
             product.Name = p.Name;
             product.Content = p.Content;
-               product.CreatedBy = $"{p.User.Userusername}";
+            product.Spaces = p.Spaces;
+            product.CreatedBy = $"{p.User.Userusername}";
             product.UserEmail = p.User.Email;
 
             return product;

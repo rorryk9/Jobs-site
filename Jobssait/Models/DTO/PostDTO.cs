@@ -13,6 +13,8 @@ namespace Jobssait.Models.DTO
 
         public string Content { get; set; }
 
+        public int Spaces { get; set; }
+
         public string CreatedBy { get; set; }
         public string UserEmail { get; set; }
     }

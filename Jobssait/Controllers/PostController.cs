@@ -81,12 +81,13 @@ namespace Jobssait.Controllers
 
             return View(post);
         }
-      /*  public IActionResult Preview(int id)
+
+        public IActionResult Aply(int id)
         {
-            postService.Delete(id);
+            postService.Aply(id);
 
             return RedirectToAction(nameof(Index));
         }
-      */
+      
     }
 }

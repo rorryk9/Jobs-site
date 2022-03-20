@@ -22,9 +22,6 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
 
                         @if (User.Identity.IsAuthenticated)
                         {
@@ -32,7 +29,8 @@
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Logout">Logout</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="User" asp-action="Data">@User.Identity.Name</a>
+                                
+                                <h6>@User.Identity.Name</h6>
                             </li>
                         }
                         else
@@ -45,7 +43,7 @@
                             </li>
                         }
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Post" asp-action="Index">Submit</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Post" asp-action="Index">Job offers</a>
                         </li>
 
                     </ul>
@@ -56,13 +54,14 @@
 
     <div class="container">
         <main role="main" class="pb-3">
+            <h1>Welcome to a page about finding and posting jobs to look at the available jobs click the Job offers button</h1>
             @RenderBody()
+
         </main>
     </div>
-    
+
     <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; 2022 - Jobssait - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>

@@ -41,6 +41,7 @@ namespace Jobssait.Migrations
                         .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
                     Name = table.Column<string>(type: "text", nullable: true),
                     Content = table.Column<string>(type: "text", nullable: true),
+                    Spaces = table.Column<int>(type: "int", nullable: false),
                     UseerId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>

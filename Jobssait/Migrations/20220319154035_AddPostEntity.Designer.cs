@@ -28,6 +28,9 @@ namespace Jobssait.Migrations
                     b.Property<string>("Content")
                         .HasColumnType("text");
 
+                    b.Property<int>("Spaces")
+                        .HasColumnType("int");
+
                     b.Property<string>("Name")
                         .HasColumnType("text");
 

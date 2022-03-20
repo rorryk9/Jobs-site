@@ -11,6 +11,8 @@ namespace Jobssait.Models
 
         public string Content { get; set; }
 
+        public int Spaces { get; set; }
+
         [ForeignKey("User")]
         public int UseerId { get; set; }
         public User User { get; set; }

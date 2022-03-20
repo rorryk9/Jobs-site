@@ -1,15 +1,19 @@
 ﻿@model List<PostDTO>
-    
-    <a asp-action="Create">
-    <button type="button" class="btn btn-success">Create</button>
-</a>
+ 
+    @if (User.Identity.IsAuthenticated)
+    {
+        <a asp-action="Create">
+            <button type="button" class="btn btn-success">Create</button>
+        </a>
+    }
 
 <table class="table">
     <thead>
         <tr>
             <th scope="col">Id</th>
-            <th scope="col">Name</th>
-            <th scope="col">Content</th>
+            <th scope="col">Job type</th>
+            <th scope="col">Description</th>
+            <th scope="col">Available Spaces</th>
             <th scope="col">Creator</th>
 
         </tr>
@@ -21,8 +25,11 @@
             <th scope="row">@post.Id</th>
             <td>@post.Name</td>
             <td>@post.Content</td>
+            <td>@post.Spaces</td>
             <td>@post.CreatedBy</td>
 
+            @if (User.Identity.IsAuthenticated)
+            {
             <td>
                 <a asp-action="Preview" asp-route-id="@post.Id">
                     <button type="button" class="btn btn-primary">Prevew</button>
@@ -39,6 +46,11 @@
                     <button type="button" class="btn btn-danger">Delete</button>
 
                 </a>
+            </td>
+            }
+            }else{
+            <td>
+                <h>login to preview job offers</h>
             </td>
             }
         </tr>
