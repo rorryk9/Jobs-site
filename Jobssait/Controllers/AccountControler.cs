@@ -1,6 +1,4 @@
-﻿//using Jobssait.Models.DTOs;
-//using Jobssait.Models.Entities;
-using Jobssait.Models;
+﻿using Jobssait.Models;
 using Jobssait.Models.DTO;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -51,10 +49,6 @@ namespace Jobssait.Controllers
             {
                 return RedirectToAction(nameof(Index), "Home");
             }
-          /*
-            List<IdentityError> errors = new List<IdentityError>(result.Errors);
-            ViewData["errors"] = errors;
-         */
 
             return View();
         }
@@ -69,7 +63,6 @@ namespace Jobssait.Controllers
                 return RedirectToAction(nameof(Index), "Home");
             }
 
-           // ViewData["errorMessage"] = "Username or password is incorrect!";
 
             return View();
         }

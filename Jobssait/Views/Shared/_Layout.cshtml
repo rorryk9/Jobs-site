@@ -25,13 +25,16 @@
 
                         @if (User.Identity.IsAuthenticated)
                         {
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Logout">Logout</a>
-                            </li>
-                            <li class="nav-item">
-                                
-                                <h6>@User.Identity.Name</h6>
-                            </li>
+                    <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" >
+                            @User.Identity.Name
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            
+                            <a class="dropdown-item" asp-area="" asp-controller="Account" asp-action="Logout">Logout</a>
+                            <a class="dropdown-item" asp-area="" asp-controller="User" asp-action="Data">@User.Identity.Name</a>
+                        </div>
+                    </div>
                         }
                         else
                         {
@@ -54,7 +57,6 @@
 
     <div class="container">
         <main role="main" class="pb-3">
-            <h1>Welcome to a page about finding and posting jobs to look at the available jobs click the Job offers button</h1>
             @RenderBody()
 
         </main>

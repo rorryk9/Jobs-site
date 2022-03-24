@@ -18,7 +18,7 @@ namespace Jobssait.Controllers
             this.userManager = userManager;
         }
 
-        public async Task<IActionResult> Details()
+        public async Task<IActionResult> Data()
         {
             User user = await userManager.GetUserAsync(User);
 
