@@ -12,6 +12,8 @@ namespace Jobssait.Models
     {
         public DbSet<Post> Posts { get; set; }
 
+        public DbSet<Applyence> Applyence { get; set; }
+
         public UserDBContext(DbContextOptions options) : base(options)
         {
         }
