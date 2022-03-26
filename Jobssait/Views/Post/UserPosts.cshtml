@@ -1,0 +1,26 @@
+﻿@model List<PostDTO>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Job type</th>
+            <th scope="col">Description</th>
+            <th scope="col">Available Spaces</th>
+            <th scope="col">Creator</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var post in Model)
+        {
+            <tr>
+                <th scope="row">@post.Id</th>
+                <td>@post.Name</td>
+                <td>@post.Content</td>
+                <td>@post.Spaces</td>
+                <td>@post.CreatedBy</td>
+            </tr>
+        }
+    </tbody>
+</table>

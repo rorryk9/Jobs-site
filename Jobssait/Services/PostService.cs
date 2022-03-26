@@ -27,6 +27,28 @@ namespace Jobssait.Services
                 .Select(p => ToDto(p))
                 .ToList();
         }
+        public List<PostDTO> GetWhithemail(string email)
+        {
+
+            return dbContext.Posts
+                .Include(p => p.User)
+                .Select(p => ToDtoEm(p))
+                .Where(p => post.UserEmail == email)
+                .ToList();
+        }
+        private static PostDTO ToDtoEm(Post p)
+        {
+            PostDTO post = new PostDTO();
+
+            post.Id = p.Id;
+            post.Name = p.Name;
+            post.Content = p.Content;
+            post.Spaces = p.Spaces;
+            post.CreatedBy = $"{p.User.Userusername}";
+            post.UserEmail = p.User.Email;
+
+            return post;
+        }
 
         public void Create(Post post, User user)
         {

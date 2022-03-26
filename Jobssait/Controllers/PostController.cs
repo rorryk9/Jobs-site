@@ -29,12 +29,18 @@ namespace Jobssait.Controllers
 
             return View(posts);
         }
-      /*  public IActionResult ApplyIndex()
+        public IActionResult UserPosts(string email)
         {
-            List<ApplyenceDTO> aplyences = applyenceService.GetAll();
+            List<PostDTO> posts = postService.GetWhithemail(email);
 
-            return View(aplyences);
-        }*/
+            return View(posts);
+        }
+        /*  public IActionResult ApplyIndex()
+          {
+              List<ApplyenceDTO> aplyences = applyenceService.GetAll();
+
+              return View(aplyences);
+          }*/
 
         [HttpGet]
         public IActionResult Create()
