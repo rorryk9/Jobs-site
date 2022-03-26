@@ -17,7 +17,7 @@ namespace Jobssait.Migrations
                     Name = table.Column<string>(type: "text", nullable: true),
                     Content = table.Column<string>(type: "text", nullable: true),
                     UseerId = table.Column<int>(type: "int", nullable: false),
-                    PostId = table.Column<int>(type: "int", nullable: false)
+                    PosstId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -29,8 +29,8 @@ namespace Jobssait.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                       name: "FK_Applyence_Posts_PostId",
-                       column: x => x.PostId,
+                       name: "FK_Applyence_Posts_PosstId",
+                       column: x => x.PosstId,
                        principalTable: "Posts",
                        principalColumn: "Id",
                        onDelete: ReferentialAction.Cascade);
@@ -40,9 +40,9 @@ namespace Jobssait.Migrations
                 table: "Applyence",
                 column: "UseerId");
             migrationBuilder.CreateIndex(
-              name: "IX_Applyence_PostId",
+              name: "IX_Applyence_PosstId",
               table: "Applyence",
-              column: "PostId");
+              column: "PosstId");
             /*
                 migrationBuilder.AddColumn<int>(
                     name: "PostId",

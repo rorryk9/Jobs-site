@@ -59,24 +59,39 @@ namespace Jobssait.Controllers
 
         
         [HttpGet]
-        public IActionResult ApplyCreate()
+        public IActionResult ApplyCreate(int id)
         {
-            return View();
+            Post post = postService.GetById(id);
+
+            return View(post);
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create(Applyence applyence)
+        public async Task<IActionResult> Create(Applyence applyence, int id)
         {
             User user = await userManager.GetUserAsync(User).ConfigureAwait(false);
 
-            Create(applyence, user);
+            Post post = postService.GetById(id);
+
+            applyence.User = user;
+
+           // applyence.Post = post;
+
+            applyence.PosstId = id;
+
+            dbContext.Applyence.Add(applyence);
+            dbContext.SaveChanges();
 
             return View();
         }
 
-        public void Create(Applyence applyence, User user)
+        public void Create(Applyence applyence, User user, Post post, int id)
         {
             applyence.User = user;
+
+            applyence.Post = post;
+
+            applyence.PosstId = id;
 
             dbContext.Applyence.Add(applyence);
             dbContext.SaveChanges();

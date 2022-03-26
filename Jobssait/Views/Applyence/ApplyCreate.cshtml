@@ -1,4 +1,6 @@
-﻿<h1>Apply</h1>
+﻿@model Post
+
+<h1>Apply</h1>
 
 <form asp-action="Create">
     <div class="form-group">
@@ -10,9 +12,11 @@
         <label>Descripyion</label>
         <input type="text" class="form-control" placeholder="Enter Content" name="content">
     </div>
-    
 
-    <button type="submit" class="btn btn-primary">Create</button>
+    <a asp-route-id="@Model.Id">
+        <button type="submit" class="btn btn-primary">Create @Model.Id</button>
+    </a>
+    
 
     <a asp-action="Index">
         <button type="button" class="btn btn-secondary">Cancel</button>

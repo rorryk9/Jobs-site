@@ -21,8 +21,9 @@ namespace Jobssait.Models
         public User User { get; set; }
 
         [ForeignKey("Post")]
-        public int PostId { get; set; }
+        public int PosstId { get; set; }
         public Post Post { get; set; }
+        
 
     }
 }

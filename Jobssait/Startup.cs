@@ -29,7 +29,7 @@ namespace Jobssait
         {
             services.AddControllersWithViews();
             services.AddDbContext<UserDBContext>(options=> {
-                options.UseMySQL("Server=localhost;Database=Jobs_db;Uid=root;Pwd=091104");
+                options.UseMySQL("Server=localhost;Database=Jobs_db;Uid=root;Pwd=alabalanica");
             });
 
             services.AddIdentity<User, IdentityRole<int>>(options =>
