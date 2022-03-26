@@ -33,7 +33,7 @@ namespace Jobssait.Services
             return dbContext.Posts
                 .Include(p => p.User)
                 .Select(p => ToDtoEm(p))
-                .Where(p => post.UserEmail == email)
+               // .Where(p => post.UserEmail == email)
                 .ToList();
         }
         private static PostDTO ToDtoEm(Post p)
