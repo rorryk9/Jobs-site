@@ -1,7 +1,9 @@
 ﻿using Jobssait.Models;
+using Jobssait.Models.DTO;
 using Jobssait.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,38 +14,74 @@ namespace Jobssait.Controllers
     public class ApplyenceController : Controller
     {
 
-        private ApplyenceService applyenceService;
+      //  private ApplyenceService applyenceService;this.applyenceService = applyenceService;ApplyenceService applyenceService,
         private UserManager<User> userManager;
+        private UserDBContext dbContext;
 
-        public ApplyenceController(ApplyenceService applyenceService, UserManager<User> userManager)
+
+        public ApplyenceController(UserManager<User> userManager, UserDBContext dbContext)
         {
-            this.applyenceService = applyenceService;
+            
             this.userManager = userManager;
+            this.dbContext = dbContext;
         }
-/*
-        public IActionResult Index()
+
+        public IActionResult ApplyIndex()
         {
-            List<PostDTO> posts = postService.GetAll();
+            List<ApplyenceDTO> applyences = GetAll();
 
-            return View(posts);
+            return View(applyences);
         }
 
+        public List<ApplyenceDTO> GetAll()
+        {
+
+            return dbContext.Applyence
+                .Include(a => a.User)
+                .Select(a => ToDto(a))
+                .ToList();
+        }
+
+        private static ApplyenceDTO ToDto(Applyence a)
+        {
+            ApplyenceDTO applyence = new ApplyenceDTO();
+
+            applyence.Id = a.Id;
+            applyence.Name = a.Name;
+            applyence.Content = a.Content;
+            applyence.CreatedBy = $"{a.User.Userusername}";
+            applyence.UserEmail = a.User.Email;
+
+            return applyence;
+        }
+
+        
         [HttpGet]
-        public IActionResult Create()
+        public IActionResult ApplyCreate()
         {
             return View();
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create(Post post)
+        public async Task<IActionResult> Create(Applyence applyence)
         {
             User user = await userManager.GetUserAsync(User).ConfigureAwait(false);
 
-            postService.Create(post, user);
+            Create(applyence, user);
 
-            return RedirectToAction(nameof(Index));
+            return View();
         }
 
+        public void Create(Applyence applyence, User user)
+        {
+            applyence.User = user;
+
+            dbContext.Applyence.Add(applyence);
+            dbContext.SaveChanges();
+
+        }
+
+        /*
         [HttpGet]
         public IActionResult Edit(int id)
         {

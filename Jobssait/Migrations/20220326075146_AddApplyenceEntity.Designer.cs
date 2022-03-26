@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Jobssait.Migrations
 {
     [DbContext(typeof(UserDBContext))]
-    [Migration("20220325082059_AddApplyenceEntity")]
+    [Migration("20220326075146_AddApplyenceEntity")]
     partial class AddApplyenceEntity
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -31,10 +31,15 @@ namespace Jobssait.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("text");
 
+                    b.Property<int>("PostId")
+                        .HasColumnType("int");
+
                     b.Property<int>("UseerId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("PostId");
 
                     b.HasIndex("UseerId");
 
@@ -208,10 +213,10 @@ namespace Jobssait.Migrations
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<int>", b =>
                 {
                     b.Property<string>("LoginProvider")
-                        .HasColumnType("varchar(256)");
+                        .HasColumnType("varchar(767)");
 
                     b.Property<string>("ProviderKey")
-                        .HasColumnType("varchar(256)");
+                        .HasColumnType("varchar(767)");
 
                     b.Property<string>("ProviderDisplayName")
                         .HasColumnType("text");
@@ -247,10 +252,10 @@ namespace Jobssait.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("LoginProvider")
-                        .HasColumnType("varchar(256)");
+                        .HasColumnType("varchar(767)");
 
                     b.Property<string>("Name")
-                        .HasColumnType("varchar(256)");
+                        .HasColumnType("varchar(767)");
 
                     b.Property<string>("Value")
                         .HasColumnType("text");
@@ -262,11 +267,19 @@ namespace Jobssait.Migrations
 
             modelBuilder.Entity("Jobssait.Models.Applyence", b =>
                 {
+                    b.HasOne("Jobssait.Models.Post", "Post")
+                        .WithMany()
+                        .HasForeignKey("PostId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("Jobssait.Models.User", "User")
                         .WithMany()
                         .HasForeignKey("UseerId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Post");
 
                     b.Navigation("User");
                 });

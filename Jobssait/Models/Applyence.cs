@@ -19,6 +19,10 @@ namespace Jobssait.Models
         [ForeignKey("User")]
         public int UseerId { get; set; }
         public User User { get; set; }
-    
+
+        [ForeignKey("Post")]
+        public int PostId { get; set; }
+        public Post Post { get; set; }
+
     }
 }

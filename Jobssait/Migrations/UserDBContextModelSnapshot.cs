@@ -29,10 +29,15 @@ namespace Jobssait.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("text");
 
+                    b.Property<int>("PostId")
+                        .HasColumnType("int");
+
                     b.Property<int>("UseerId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("PostId");
 
                     b.HasIndex("UseerId");
 
@@ -260,11 +265,19 @@ namespace Jobssait.Migrations
 
             modelBuilder.Entity("Jobssait.Models.Applyence", b =>
                 {
+                    b.HasOne("Jobssait.Models.Post", "Post")
+                        .WithMany()
+                        .HasForeignKey("PostId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("Jobssait.Models.User", "User")
                         .WithMany()
                         .HasForeignKey("UseerId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Post");
 
                     b.Navigation("User");
                 });

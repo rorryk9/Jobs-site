@@ -1,0 +1,26 @@
+﻿@model List<ApplyenceDTO>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Job type</th>
+                <th scope="col">Description</th>
+                <th scope="col">Creator</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var applyence in Model)
+            {
+            <tr>
+                <th scope="row">@applyence.Id</th>
+                <td>@applyence.Name</td>
+                <td>@applyence.Content</td>
+                <td>@applyence.CreatedBy</td>
+
+            </tr>
+            }
+
+        </tbody>
+    </table>

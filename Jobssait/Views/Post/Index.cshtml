@@ -28,30 +28,44 @@
             <td>@post.Spaces</td>
             <td>@post.CreatedBy</td>
 
-            @if (User.Identity.IsAuthenticated)
-            {
-            <td>
-                <a asp-action="Preview" asp-route-id="@post.Id">
-                    <button type="button" class="btn btn-primary">Prevew</button>
-                </a>
-            </td>
+
 
             @if (User.Identity.Name == post.UserEmail)
             {
-            <td>
-                <a asp-action="Edit" asp-route-id="@post.Id">
-                    <button type="button" class="btn btn-warning">Edit</button>
-                </a>
-                <a asp-action="Delete" asp-route-id="@post.Id">
-                    <button type="button" class="btn btn-danger">Delete</button>
+        <td>
+            <a asp-action="Edit" asp-route-id="@post.Id">
+                <button type="button" class="btn btn-warning">Edit</button>
+            </a>
+            <a asp-action="Delete" asp-route-id="@post.Id">
+                <button type="button" class="btn btn-danger">Delete</button>
 
-                </a>
-            </td>
+            </a>
+
+        </td>
+        <td>
+            <a asp-area="" asp-controller="Applyence" asp-action="ApplyIndex">
+                <button type="button" class="btn btn-primary">Look at Aplyences</button>
+            </a>
+
+        </td>
             }
-            }else{
-            <td>
-                <h>login to preview job offers</h>
-            </td>
+            else
+            {
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <td>
+                        <a asp-action="Preview" asp-route-id="@post.Id">
+                            <button type="button" class="btn btn-primary">Prevew</button>
+                        </a>
+                    </td>
+
+                }
+                else
+                {
+                    <td>
+                        <h>login to preview job offers</h>
+                    </td>
+                }
             }
         </tr>
         }

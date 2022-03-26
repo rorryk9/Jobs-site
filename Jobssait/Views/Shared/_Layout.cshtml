@@ -25,16 +25,16 @@
 
                         @if (User.Identity.IsAuthenticated)
                         {
-                    <div class="dropdown">
-                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" >
-                            @User.Identity.Name
-                        </button>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            
-                            <a class="dropdown-item" asp-area="" asp-controller="Account" asp-action="Logout">Logout</a>
-                            <a class="dropdown-item" asp-area="" asp-controller="User" asp-action="Data">@User.Identity.Name</a>
-                        </div>
-                    </div>
+                            <div class="dropdown">
+                                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown">
+                                    @User.Identity.Name
+                                </button>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+
+                                    <a class="dropdown-item" asp-area="" asp-controller="Account" asp-action="Logout">Logout</a>
+                                    <a class="dropdown-item" asp-area="" asp-controller="User" asp-action="Data">@User.Identity.Name</a>
+                                </div>
+                            </div>
                         }
                         else
                         {
@@ -47,6 +47,10 @@
                         }
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Post" asp-action="Index">Job offers</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Applyence" asp-action="ApplyIndex">Look at Aplyences</a>
                         </li>
 
                     </ul>

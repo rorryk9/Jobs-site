@@ -65,16 +65,16 @@ namespace Jobssait.Services
         }
         private static PostDTO ToDto(Post p)
         {
-            PostDTO product = new PostDTO();
+            PostDTO post = new PostDTO();
 
-            product.Id = p.Id;
-            product.Name = p.Name;
-            product.Content = p.Content;
-            product.Spaces = p.Spaces;
-            product.CreatedBy = $"{p.User.Userusername}";
-            product.UserEmail = p.User.Email;
+            post.Id = p.Id;
+            post.Name = p.Name;
+            post.Content = p.Content;
+            post.Spaces = p.Spaces;
+            post.CreatedBy = $"{p.User.Userusername}";
+            post.UserEmail = p.User.Email;
 
-            return product;
+            return post;
         }
     }
 }

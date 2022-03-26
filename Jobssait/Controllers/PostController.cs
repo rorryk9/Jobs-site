@@ -14,11 +14,13 @@ namespace Jobssait.Controllers
     {
         private PostService postService;
         private UserManager<User> userManager;
+        //private ApplyenceService applyenceService;
 
         public PostController(PostService postService, UserManager<User> userManager)
         {
             this.postService = postService;
             this.userManager = userManager;
+          //  this.applyenceService = applyenceService;, ApplyenceService applyenceService
         }
 
         public IActionResult Index()
@@ -27,6 +29,12 @@ namespace Jobssait.Controllers
 
             return View(posts);
         }
+      /*  public IActionResult ApplyIndex()
+        {
+            List<ApplyenceDTO> aplyences = applyenceService.GetAll();
+
+            return View(aplyences);
+        }*/
 
         [HttpGet]
         public IActionResult Create()
