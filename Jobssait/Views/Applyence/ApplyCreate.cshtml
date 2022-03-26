@@ -2,7 +2,7 @@
 
 <h1>Apply</h1>
 
-<form asp-action="Create">
+<form asp-action="Create" asp-route-id="@Model.Id">
     <div class="form-group">
         <label>Job type</label>
         <input type="text" class="form-control" placeholder="Enter name" name="name">
@@ -13,7 +13,7 @@
         <input type="text" class="form-control" placeholder="Enter Content" name="content">
     </div>
 
-    <a asp-route-id="@Model.Id">
+    <a >
         <button type="submit" class="btn btn-primary">Create @Model.Id</button>
     </a>
     

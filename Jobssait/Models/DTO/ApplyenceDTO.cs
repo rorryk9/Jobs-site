@@ -16,6 +16,6 @@ namespace Jobssait.Models.DTO
         public int CreatedOnId { get; set; }
 
         public string CreatedBy { get; set; }
-        public string UserEmail { get; set; }
+        public int PosstID { get; set; }
     }
 }

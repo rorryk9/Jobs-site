@@ -52,7 +52,7 @@ namespace Jobssait.Controllers
             applyence.Name = a.Name;
             applyence.Content = a.Content;
             applyence.CreatedBy = $"{a.User.Userusername}";
-            applyence.UserEmail = a.User.Email;
+            applyence.PosstID = a.PosstID;
 
             return applyence;
         }
@@ -77,7 +77,7 @@ namespace Jobssait.Controllers
 
            // applyence.Post = post;
 
-            applyence.PosstId = id;
+            applyence.PosstID = id;
 
             dbContext.Applyence.Add(applyence);
             dbContext.SaveChanges();
@@ -91,7 +91,7 @@ namespace Jobssait.Controllers
 
             applyence.Post = post;
 
-            applyence.PosstId = id;
+            applyence.PosstID = id;
 
             dbContext.Applyence.Add(applyence);
             dbContext.SaveChanges();
