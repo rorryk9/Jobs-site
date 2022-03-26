@@ -16,13 +16,15 @@ namespace Jobssait.Controllers
 
       //  private ApplyenceService applyenceService;this.applyenceService = applyenceService;ApplyenceService applyenceService,
         private UserManager<User> userManager;
+        private PostService postService;
         private UserDBContext dbContext;
 
 
-        public ApplyenceController(UserManager<User> userManager, UserDBContext dbContext)
+        public ApplyenceController(UserManager<User> userManager, PostService postService, UserDBContext dbContext)
         {
             
             this.userManager = userManager;
+            this.postService = postService;
             this.dbContext = dbContext;
         }
 

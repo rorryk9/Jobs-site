@@ -16,12 +16,17 @@
         <label>Available Spaces</label>
         <input type="number" class="form-control" value="@Model.Spaces" disabled>
     </div>
-
+   
 
 </form>
-<a asp-area="" asp-controller="Applyence" asp-action="ApplyCreate">
-    <button type="submit" class="btn btn-primary">Aply</button>
-</a>
-<a asp-action="Index">
-    <button type="button" class="btn btn-secondary">Cancel</button>
-</a>
+<form asp-area="" asp-controller="Applyence" asp-action="ApplyCreate" asp-route-id="@Model.Id">
+    <div class="form-group">
+        <label>Available Spaces</label>
+        <input type="number" class="form-control" placeholder="Enter Spaces" name="Spaces">
+    </div>
+        <button type="submit" class="btn btn-primary">Aply</button>
+</form>
+   
+    <a asp-action="Index">
+        <button type="button" class="btn btn-secondary">Cancel</button>
+    </a>
