@@ -17,7 +17,7 @@ namespace Jobssait.Migrations
                     Name = table.Column<string>(type: "text", nullable: true),
                     Content = table.Column<string>(type: "text", nullable: true),
                     UseerId = table.Column<int>(type: "int", nullable: false),
-                    PosstId = table.Column<int>(type: "int", nullable: true)
+                    PosstId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {

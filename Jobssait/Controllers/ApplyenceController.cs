@@ -28,10 +28,9 @@ namespace Jobssait.Controllers
             this.dbContext = dbContext;
         }
 
-        public IActionResult ApplyIndex()
+        public IActionResult ApplyIndex(int id)
         {
-            List<ApplyenceDTO> applyences = GetAll();
-
+            List<Applyence> applyences = dbContext.Applyence.Where(a => a.PosstID == id).ToList<Applyence>();
             return View(applyences);
         }
 
@@ -65,6 +64,10 @@ namespace Jobssait.Controllers
 
             return View(post);
         }
+        public IActionResult Finish()
+        {
+            return View();
+        }
 
         [HttpPost]
         public async Task<IActionResult> Create(Applyence applyence, int id)
@@ -72,17 +75,21 @@ namespace Jobssait.Controllers
             User user = await userManager.GetUserAsync(User).ConfigureAwait(false);
 
             Post post = postService.GetById(id);
+            Applyence newApplyence = new Applyence();
 
-            applyence.User = user;
+            newApplyence.Name = applyence.Name;
+            newApplyence.Content = applyence.Content;
 
-           // applyence.Post = post;
+            newApplyence.User = user;
 
-            applyence.PosstID = id;
+            newApplyence.Post = post;
 
-            dbContext.Applyence.Add(applyence);
+            newApplyence.PosstID = id;
+
+            dbContext.Applyence.Add(newApplyence);
             dbContext.SaveChanges();
 
-            return View();
+            return RedirectToAction(nameof(Finish));
         }
 
         public void Create(Applyence applyence, User user, Post post, int id)
