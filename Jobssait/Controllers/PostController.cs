@@ -14,13 +14,13 @@ namespace Jobssait.Controllers
     {
         private PostService postService;
         private UserManager<User> userManager;
-        //private ApplyenceService applyenceService;
+        private UserDBContext dbContext;
 
-        public PostController(PostService postService, UserManager<User> userManager)
+        public PostController(PostService postService, UserManager<User> userManager, UserDBContext dbContext)
         {
             this.postService = postService;
             this.userManager = userManager;
-          //  this.applyenceService = applyenceService;, ApplyenceService applyenceService
+            this.dbContext = dbContext;
         }
 
         public IActionResult Index()
@@ -29,19 +29,15 @@ namespace Jobssait.Controllers
 
             return View(posts);
         }
-        public IActionResult UserPosts(string email)
+        public IActionResult UserPosts(int id)
         {
-            List<PostDTO> posts = postService.GetWhithemail(email);
+            List<Post> post = dbContext.Posts.Where(p => p.UseerId == id).ToList<Post>();
 
-            return View(posts);
+        //    List<PostDTO> posts = postService.GetWhithemail(email);
+
+            return View(post);
         }
-        /*  public IActionResult ApplyIndex()
-          {
-              List<ApplyenceDTO> aplyences = applyenceService.GetAll();
-
-              return View(aplyences);
-          }*/
-
+      
         [HttpGet]
         public IActionResult Create()
         {

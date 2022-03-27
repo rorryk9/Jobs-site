@@ -24,6 +24,7 @@ namespace Jobssait.Controllers
 
             UserDTO userDTO = new UserDTO();
             userDTO.Email = user.Email;
+            userDTO.Id = user.Id;
             userDTO.Userusername = user.Userusername;
 
             return View(userDTO);
