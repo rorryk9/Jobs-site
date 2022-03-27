@@ -68,6 +68,10 @@ namespace Jobssait.Controllers
         {
             return View();
         }
+        public IActionResult Finishempl()
+        {
+            return View();
+        }
 
         [HttpPost]
         public async Task<IActionResult> Create(Applyence applyence, int id)
@@ -105,55 +109,33 @@ namespace Jobssait.Controllers
 
         }
 
-        /*
-        [HttpGet]
-        public IActionResult Edit(int id)
+        public Applyence GetById(int id)
         {
-            Post post = postService.GetById(id);
-
-            return View(post);
+            return dbContext.Applyence.FirstOrDefault(x => x.Id == id);
         }
-
-        [HttpPost]
-        public IActionResult Edit(Post post)
+        public Applyence GetByPostId(int id)
         {
-            postService.Edit(post);
-
-            return RedirectToAction(nameof(Index));
+            return dbContext.Applyence.FirstOrDefault(x => x.PosstID == id);
         }
-
-        [HttpGet]
-        public IActionResult Delete(int id)
-        {
-            Post post = postService.GetById(id);
-
-            return View(post);
-        }
-
         [HttpPost]
         public IActionResult DeleteConfirm(int id)
         {
-            postService.Delete(id);
+            Applyence dbpost = GetById(id);
+            dbContext.Applyence.Remove(dbpost);
+            dbContext.SaveChanges();
 
             return RedirectToAction(nameof(Index));
         }
-        public IActionResult Preview(int id)
-        {
-            Post post = postService.GetById(id);
-
-            return View(post);
-        }
-
         public IActionResult Aply(int id)
         {
             postService.Aply(id);
 
-            return RedirectToAction(nameof(Index));
+            Applyence dbpost = GetByPostId(id);
+            dbContext.Applyence.Remove(dbpost);
+            dbContext.SaveChanges();
+
+            return RedirectToAction(nameof(Finishempl));
         }
-        public IActionResult Index()
-        {
-            return View();
-        }
-*/
+
     }
 }

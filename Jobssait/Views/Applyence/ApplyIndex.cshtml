@@ -1,26 +1,34 @@
 ﻿@model List<Applyence>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th scope="col">Id</th>
-                <th scope="col">Job type</th>
-                <th scope="col">Description</th>
-                <th scope="col">Creator</th>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Name of</th>
+            <th scope="col">Description</th>
+            <th scope="col">Creator</th>
 
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var applyence in Model)
-            {
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var applyence in Model)
+        {
             <tr>
                 <th scope="row">@applyence.Id</th>
                 <td>@applyence.Name</td>
                 <td>@applyence.Content</td>
                 <td>@applyence.UseerId</td>
-
             </tr>
-            }
+        <td>
+            <a asp-action="Aply" asp-route-id="@applyence.PosstID">
+                <button type="button" class="btn btn-primary">Acept as employee @applyence.PosstID</button>
+            </a>
+
+        </td>
+    }
 
         </tbody>
     </table>
+    <a asp-area="" asp-controller="Post" asp-action="Index">
+        <button type="button" class="btn btn-secondary">Cancel</button>
+    </a>

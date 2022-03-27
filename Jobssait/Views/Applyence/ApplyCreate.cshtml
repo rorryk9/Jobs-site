@@ -4,22 +4,17 @@
 
 <form asp-action="Create" asp-route-id="@Model.Id">
     <div class="form-group">
-        <label>Job type</label>
+        <label>Your name</label>
         <input type="text" class="form-control" placeholder="Enter name" name="name">
     </div>
 
     <div class="form-group">
-        <label>Descripyion</label>
+        <label>Descripyion about you</label>
         <input type="text" class="form-control" placeholder="Enter Content" name="content">
     </div>
 
     <a >
         <button type="submit" class="btn btn-primary">Create</button>
-    </a>
-    
-
-    <a asp-action="Index">
-        <button type="button" class="btn btn-secondary">Cancel</button>
     </a>
 
 </form>

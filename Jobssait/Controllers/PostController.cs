@@ -33,8 +33,6 @@ namespace Jobssait.Controllers
         {
             List<Post> post = dbContext.Posts.Where(p => p.UseerId == id).ToList<Post>();
 
-        //    List<PostDTO> posts = postService.GetWhithemail(email);
-
             return View(post);
         }
       

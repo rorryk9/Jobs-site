@@ -1,10 +1,16 @@
 ﻿<h1>Create Post</h1>
 
 <form asp-action="Create">
-    <div class="form-group">
-        <label>Job type</label>
-        <input type="text" class="form-control" placeholder="Enter name" name="name">
-    </div>
+    
+    <select class="form-outline custom-select form-white mb-4" aria-label="Default select example" name="name">
+        <option selected value="">Job type</option>
+        <option value="prepodavatel">prepodavatel</option>
+        <option value="It">It</option>
+        <option value="General">General worker</option>
+        <option value="General">Enjeneer</option>
+        <option value="General">Architect</option>
+        <option value="General">Prodavach</option>
+    </select>
 
     <div class="form-group">
         <label>Descripyion</label>
